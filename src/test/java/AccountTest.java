@@ -1,22 +1,42 @@
+import org.junit.Before;
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class AccountTest {
-    public void testAccount() throws Exception {
-        Account account =  new Account();
-        if (account == null) {
-            throw new Exception("계좌 생성 실패");
-        }
+
+    private Account account;
+
+    @Before
+    public void setup() {
+        account = new Account(10000);
     }
 
-    public static void main(String[] args) {
-        AccountTest accountTest = new AccountTest();
-        try {
-            accountTest.testAccount();
-        } catch (Exception e) {
-            System.out.printf("실패");
-            e.printStackTrace();
-        }
-        System.out.printf("성공");
+    @Test
+    public void testAccount() throws Exception {
+    }
+
+    @Test
+    public void testGetBalance() throws Exception {
+        assertEquals(10000, account.getBalance().intValue());
+
+        account = new Account(1000);
+        assertEquals(1000, account.getBalance().intValue());
+
+        account = new Account(0);
+        assertEquals(0, account.getBalance().intValue());
+    }
+
+    @Test
+    public void testDeposit() throws Exception {
+        account.deposit(1000);
+        assertEquals(11000, account.getBalance().intValue());
+    }
+
+    @Test
+    public void testWithdraw() throws Exception {
+        account.withdraw(1000);
+        assertEquals(9000, account.getBalance().intValue());
     }
 
 
