@@ -1,3 +1,6 @@
+package chapter01;
+
+import chapter01.Account;
 import org.junit.Before;
 import org.junit.Test;
 
