@@ -20,7 +20,7 @@ public class NoiseCheckerTest {
     }
 
     @Test
-    public void testSound_NOISY() {
+    public void testSound_NOISY() throws Exception {
         final INoise noise = mock (INoise.class);
         final int NOISY_SOUND = 11;
         when (noise.sound()).thenReturn(NOISY_SOUND);
